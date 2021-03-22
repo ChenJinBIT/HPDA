@@ -28,9 +28,9 @@ for j in 0.0001
 					--niter_decay 200 \
 					--frame_pseudo 50 \
 					--dataroot /home/chenjin/HPDA/data \
-					--S_list Stanford40_resnet50_list.txt \
-					--T_list ucf_i3d_feature_frame_num_list.txt \
-					--F_path ucf_resnet50_frame_feature \
+					--S_list sourcelistname.txt \
+					--T_list targetlistname.txt \
+					--F_path framepath \
 					--result_path ./test_results_SU_st_concat_pseudo \
 					--no_html \
 					--no_dropout \
