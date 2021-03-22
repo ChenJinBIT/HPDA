@@ -20,7 +20,7 @@ class BaseOptions():
     def initialize(self, parser):
         """Define the common options that are used in both training and test."""
         # basic parameters
-        parser.add_argument('--dataroot', required=True, help='path to images (should have subfolders trainA, trainB, valA, valB, etc)')
+        parser.add_argument('--dataroot', required=True, help='path to images (source data, target data)')
         parser.add_argument('--class_num', dest='class_num',type=int, default=12, help='# the number of categories')
         parser.add_argument('--frame_num', dest='frame_num',type=int, default=8, help='# the number of sample frames from each video')
 
@@ -28,13 +28,13 @@ class BaseOptions():
         parser.add_argument('--gpu_ids', type=str, default='0', help='gpu ids: e.g. 0  0,1,2, 0,2. use -1 for CPU')
         parser.add_argument('--checkpoints_dir', type=str, default='./checkpoints', help='models are saved here')
         # model parameters
-        parser.add_argument('--model', type=str, default='cycle_gan', help='chooses which model to use. [cycle_gan_realA|cycle_gan | pix2pix | test | colorization]')
+        parser.add_argument('--model', type=str, default='cycle_gan', help='chooses which model to use.')
         parser.add_argument('--input_is', type=int, default=2048, help='# of input image feature channels: 2048 for resnet feature ')
         parser.add_argument('--output_vs', type=int, default=1024, help='# of output i-v spatial feature channels: 1024 for I3D feature')
-        parser.add_argument('--input_it', type=int, default=1024, help='# of input i-v temporal feature channels: 1024 spatial+1024 noise+ 12 temporal context')
+        parser.add_argument('--input_it', type=int, default=1024, help='# of input i-v temporal feature channels: 1024 spatial+1024 noise+ the dim of inferred temporal effect')
         parser.add_argument('--input_noise', type=int, default=1024, help='# of input noist channels for generating temporal feature')
         parser.add_argument('--output_vt', type=int, default=1024, help='# of output i-v temporal feature channels: 1024 for I3D feature')
-        parser.add_argument('--context_dim', type=int, default=40, help='# of 12 class probability')
+        parser.add_argument('--context_dim', type=int, default=40, help='# the dim of inferred effect')
         parser.add_argument('--hidden_dim', type=int, default=512, help='# of output i-v temporal feature channels: 1024 for I3D feature')
         parser.add_argument('--factor_num', type=int, default=5, help='# of 12 class probability')
 
