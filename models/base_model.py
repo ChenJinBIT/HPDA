@@ -161,19 +161,19 @@ class BaseModel(ABC):
                 net = getattr(self, 'net' + name)
 
                 if len(self.gpu_ids) > 0 and torch.cuda.is_available():
-                    #if name=='D_A'or name=='D_B' or name=='D_A_T'or name=='D_B_T':
-                    #    for i in range(len(self.netD_A)):
-                    #        torch.save(net[i].state_dict(), save_path)
-                    #        net[i].cuda(self.gpu_ids[0])
-                    #else:
-                    torch.save(net.state_dict(), save_path)
-                    net.cuda(self.gpu_ids[0])                        
+                    if name=='D_A'or name=='D_B' or name=='D_A_T'or name=='D_B_T':
+                        for i in range(len(self.netD_A)):
+                            torch.save(net[i].state_dict(), save_path)
+                            net[i].cuda(self.gpu_ids[0])
+                    else:
+                        torch.save(net.state_dict(), save_path)
+                        net.cuda(self.gpu_ids[0])                        
                 else:
-                    #if name=='D_A'or name=='D_B'or name=='D_A_T'or name=='D_B_T':
-                    #    for i in range(len(self.netD_A)):
-                    #        torch.save(net[i].state_dict(), save_path)
-                    #else:
-                    torch.save(net.state_dict(), save_path)   
+                    if name=='D_A'or name=='D_B'or name=='D_A_T'or name=='D_B_T':
+                        for i in range(len(self.netD_A)):
+                            torch.save(net[i].state_dict(), save_path)
+                    else:
+                        torch.save(net.state_dict(), save_path)   
                     
 
     def __patch_instance_norm_state_dict(self, state_dict, module, keys, i=0):
@@ -273,13 +273,13 @@ class BaseModel(ABC):
             if isinstance(name, str):
                 net = getattr(self, 'net' + name)
                 num_params = 0
-                #if name=='D_A' or name=='D_B' or name=='D_A_T'or name=='D_B_T':
-                #    for i in range(len(net)):
-                #        for param in net[i].parameters():
-                #            num_params += param.numel()
-                #else:                         
-                for param in net.parameters():
-                    num_params += param.numel()                    
+                if name=='D_A' or name=='D_B' or name=='D_A_T'or name=='D_B_T':
+                    for i in range(len(net)):
+                        for param in net[i].parameters():
+                            num_params += param.numel()
+                else:                         
+                    for param in net.parameters():
+                        num_params += param.numel()                    
                 if verbose:
                     print(net)
                 print('[Network %s] Total number of parameters : %.3f M' % (name, num_params / 1e6))
