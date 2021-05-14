@@ -25,9 +25,11 @@ The format of video frame features is ``opt.F_path/class_dir/video_name/framenum
 * For E-H task, bash run_st_concat_pseudo_EH.sh
 
 ### Citation
+'''
 @inproceedings{chen2021spatial,  
   title={Spatial-temporal Causal Inference for Partial Image-to-video Adaptation},  
   author={Chen, Jin and Wu, Xinxiao and Yao Hu and Jiebo, Luo},  
   booktitle={Proceedings of the AAAI Conference on Artificial Intelligence (AAAI)},  
   year={2021}  
 }
+'''
