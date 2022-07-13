@@ -24,6 +24,8 @@ The format of targetlistname.txt is the i3d feature of a video, the correspondin
 * Prepare video frame features (saved in dataroot/opt.F_path)  
 The format of video frame features is ``opt.F_path/class_dir/video_name/framenum.npy''  
 
+* Features are avaiable in https://pan.baidu.com/s/11DlH06gz2cjRPOoOnB-KEw with token: xf2r
+
 #### 2. Run
 * For S-U task, bash run_st_concat_pseudo_SU.sh  
 * For E-H task, bash run_st_concat_pseudo_EH.sh
